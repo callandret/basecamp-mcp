@@ -20,7 +20,7 @@ An MCP (Model Context Protocol) server that integrates Basecamp 3 with Claude, e
 ## Prerequisites
 
 - Node.js 18+
-- A Basecamp 3 account
+- A Basecamp 3 account (or higher)
 - Basecamp API credentials (Client ID and Client Secret)
 
 ## Installation
