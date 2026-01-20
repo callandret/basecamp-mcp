@@ -34,7 +34,7 @@ npm install -g basecamp-mcp
 ### From source
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/basecamp-mcp.git
+git clone https://github.com/callandret/basecamp-mcp.git
 cd basecamp-mcp
 npm install
 npm run build
