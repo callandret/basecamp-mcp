@@ -1,0 +1,48 @@
+{
+  "name": "basecamp-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Basecamp 3 API integration with Claude",
+  "main": "dist/index.js",
+  "bin": {
+    "basecamp-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["mcp", "basecamp", "claude", "anthropic", "ai", "model-context-protocol"],
+  "author": "Joshua Callandret",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/basecamp-mcp.git"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/basecamp-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/basecamp-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "express": "^5.2.1",
+    "open": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.8",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+  
+}
