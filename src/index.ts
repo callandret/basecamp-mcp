@@ -223,6 +223,58 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       }
     },
     {
+      name: 'get_todolist_groups',
+      description: 'List to-do list groups (sections) within a to-do list',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          project_id: { type: 'string', description: 'The project ID' },
+          todolist_id: { type: 'string', description: 'The to-do list ID' },
+          status: { type: 'string', description: 'Filter by status (archived/trashed)' }
+        },
+        required: ['project_id', 'todolist_id']
+      }
+    },
+    {
+      name: 'get_todolist_group',
+      description: 'Get a single to-do list group',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          project_id: { type: 'string', description: 'The project ID' },
+          group_id: { type: 'string', description: 'The group ID' }
+        },
+        required: ['project_id', 'group_id']
+      }
+    },
+    {
+      name: 'create_todolist_group',
+      description: 'Create a new to-do list group (section) within a to-do list',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          project_id: { type: 'string', description: 'The project ID' },
+          todolist_id: { type: 'string', description: 'The to-do list ID' },
+          name: { type: 'string', description: 'Group name' },
+          color: { type: 'string', description: 'Group color (white, red, orange, yellow, green, blue, aqua, purple, gray, pink, brown)' }
+        },
+        required: ['project_id', 'todolist_id', 'name']
+      }
+    },
+    {
+      name: 'reposition_todolist_group',
+      description: 'Change the position of a to-do list group',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          project_id: { type: 'string', description: 'The project ID' },
+          group_id: { type: 'string', description: 'The group ID' },
+          position: { type: 'number', description: 'New position (1-based index)' }
+        },
+        required: ['project_id', 'group_id', 'position']
+      }
+    },
+    {
       name: 'create_message',
       description: 'Post a message to a project message board',
       inputSchema: {
@@ -1219,6 +1271,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         break;
       case 'reposition_todo':
         result = await client.repositionTodo(a.project_id, a.todo_id, a.position);
+        break;
+      case 'get_todolist_groups':
+        result = await client.getTodoListGroups(a.project_id, a.todolist_id, a.status);
+        break;
+      case 'get_todolist_group':
+        result = await client.getTodoListGroup(a.project_id, a.group_id);
+        break;
+      case 'create_todolist_group':
+        result = await client.createTodoListGroup(a.project_id, a.todolist_id, a.name, a.color);
+        break;
+      case 'reposition_todolist_group':
+        result = await client.repositionTodoListGroup(a.project_id, a.group_id, a.position);
         break;
       case 'create_message':
         result = await client.createMessage(

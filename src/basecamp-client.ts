@@ -137,6 +137,32 @@ export class BasecampClient {
     });
   }
 
+  // To-do List Groups
+  async getTodoListGroups(projectId: string, todolistId: string, status?: string) {
+    const query = status ? `?status=${status}` : '';
+    return this.request(`/buckets/${projectId}/todolists/${todolistId}/groups.json${query}`);
+  }
+
+  async getTodoListGroup(projectId: string, groupId: string) {
+    return this.request(`/buckets/${projectId}/todolists/${groupId}.json`);
+  }
+
+  async createTodoListGroup(projectId: string, todolistId: string, name: string, color?: string) {
+    const body: { name: string; color?: string } = { name };
+    if (color) body.color = color;
+    return this.request(`/buckets/${projectId}/todolists/${todolistId}/groups.json`, {
+      method: 'POST',
+      body: JSON.stringify(body)
+    });
+  }
+
+  async repositionTodoListGroup(projectId: string, groupId: string, position: number) {
+    return this.request(`/buckets/${projectId}/todolists/groups/${groupId}/position.json`, {
+      method: 'PUT',
+      body: JSON.stringify({ position })
+    });
+  }
+
   // Messages
   async getMessages(projectId: string, messageboardId: string) {
     return this.request(`/buckets/${projectId}/message_boards/${messageboardId}/messages.json`);

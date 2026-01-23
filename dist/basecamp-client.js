@@ -103,6 +103,29 @@ export class BasecampClient {
             body: JSON.stringify({ position })
         });
     }
+    // To-do List Groups
+    async getTodoListGroups(projectId, todolistId, status) {
+        const query = status ? `?status=${status}` : '';
+        return this.request(`/buckets/${projectId}/todolists/${todolistId}/groups.json${query}`);
+    }
+    async getTodoListGroup(projectId, groupId) {
+        return this.request(`/buckets/${projectId}/todolists/${groupId}.json`);
+    }
+    async createTodoListGroup(projectId, todolistId, name, color) {
+        const body = { name };
+        if (color)
+            body.color = color;
+        return this.request(`/buckets/${projectId}/todolists/${todolistId}/groups.json`, {
+            method: 'POST',
+            body: JSON.stringify(body)
+        });
+    }
+    async repositionTodoListGroup(projectId, groupId, position) {
+        return this.request(`/buckets/${projectId}/todolists/groups/${groupId}/position.json`, {
+            method: 'PUT',
+            body: JSON.stringify({ position })
+        });
+    }
     // Messages
     async getMessages(projectId, messageboardId) {
         return this.request(`/buckets/${projectId}/message_boards/${messageboardId}/messages.json`);

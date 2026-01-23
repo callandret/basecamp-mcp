@@ -7,6 +7,7 @@ An MCP (Model Context Protocol) server that integrates Basecamp 3 with Claude, e
 - **Projects**: List, view, and manage Basecamp projects
 - **To-dos**: Create, update, complete, and organize to-do items
 - **To-do Lists**: Full CRUD operations on to-do lists
+- **To-do List Groups**: Create and organize sections within to-do lists with color coding
 - **Documents & Vaults**: Create and manage documents and folders
 - **Messages**: Read and create messages on message boards
 - **Comments**: Add and view comments on any recordable
@@ -106,6 +107,9 @@ On first use, the server will open a browser window for Basecamp OAuth authentic
 | `get_todos` | List to-dos in a list |
 | `create_todo` | Create a new to-do |
 | `complete_todo` | Mark to-do as complete |
+| `get_todolist_groups` | List groups/sections in a to-do list |
+| `create_todolist_group` | Create a group with optional color |
+| `reposition_todolist_group` | Reorder groups within a list |
 | `get_documents` | List documents in a vault |
 | `create_document` | Create a new document |
 | `get_messages` | List message board messages |
@@ -113,7 +117,7 @@ On first use, the server will open a browser window for Basecamp OAuth authentic
 | `get_campfire_lines` | Read campfire chat |
 | `create_campfire_line` | Send a chat message |
 | `search` | Search across Basecamp |
-| ... and 30+ more |
+| ... and 35+ more |
 
 ## Development
 
