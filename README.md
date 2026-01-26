@@ -1,6 +1,8 @@
 # Basecamp MCP Server
 
-An MCP (Model Context Protocol) server that integrates Basecamp 3 with Claude, enabling AI-powered project management.
+An MCP (Model Context Protocol) server that integrates Basecamp 3 with Claude, enabling AI-powered project management. 
+
+This repo was 100% vibe-coded project using Claude. You can read about the process here: https://www.callandret.com/vibe-coding-a-basecamp-mcp-server/
 
 ## Features
 
